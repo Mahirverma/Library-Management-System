@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">Welcome to Your Dashboard, {{username}}!</h2>
+
+            <!-- Display user role -->
+            <div class="alert alert-info text-center" role="alert">
+                <!-- You are logged in as a  user.role . -->
+            </div>
+
+            <!-- Dashboard Actions -->
+            <div class="list-group">
+                <a href="/view_books" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">View Books</h5>
+                    <p class="mb-1">Browse the available books in the library.</p>
+                </a>
+
+                <!-- <a href="/profile" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">Manage Profile</h5>
+                    <p class="mb-1">Edit your personal details and settings.</p>
+                </a>
+
+                <!--  if user.role == 'admin'  -->
+                <!-- <a href="/manage_books" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">Manage Books</h5>
+                    <p class="mb-1">Add, update, or remove books from the library.</p>
+                </a> -->
+
+                <!-- <a href="/manage_users" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">Manage Users</h5>
+                    <p class="mb-1">View and delete users in the system.</p>
+                </a> -->
+                <!-- endif  -->
+
+                <!-- <a href="/logout" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">Logout</h5>
+                    <p class="mb-1">Log out of your account.</p>
+                </a> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

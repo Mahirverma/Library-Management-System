@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <!-- Link to Bootstrap CSS (version 4) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0oA7MwU2ZpM51FJvfXfggCx5k5EJh0bX7pa2jz6d1OrKoyFv" crossorigin="anonymous">
+    <!-- Custom CSS for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <!-- Header with Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Library Management</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <span>
+                <a class="nav-link" href="/dashboard">Home</a>
+            </span>
+
+            <span>
+                <a class="nav-link" href="/users/me">My Profile</a>
+            </span>
+            {% if current_user.is_authenticated %}
+            <span><a href="{{ url_for('logout') }}">Log Out</a></span>
+            {% else %}
+            <span>
+                <a class="nav-link" href="/login">Login</a>
+            </span>
+            <span>
+                <a class="nav-link" href="/register">Register</a>
+            </span>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- Main Content Section -->
+    <div class="container mt-5">
+        {% block content %}
+        <!-- The content of individual pages will be injected here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Library Management System | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Link to Bootstrap JS (for mobile responsiveness) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zyN2A2aDEZy5e2vZ8gM6v4mTxxd7AfSEN5KDBjr7"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0oA7MwU2ZpM51FJvfXfggCx5k5EJh0bX7pa2jz6d1OrKoyFv"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq0oA7MwU2ZpM51FJvfXfggCx5k5EJh0bX7pa2jz6d1OrKoyFv"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-between mb-4">
+        <div class="col-md-6">
+            <h2>Users Management</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Users List -->
+    <div class="list-group">
+        {% for user in users.items %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <h5>{{ user.username }}</h5>
+                <p>Email: {{ user.email }}</p>
+                <p>Role: {{ user.role }}</p>
+            </div>
+            <div class="text-right">
+                <!-- View Profile Link for all users -->
+                <a href="/profile/{{ user.id }}" class="btn btn-info btn-sm">View Profile</a>
+
+                {% if user.role != 'admin' %}
+                <!-- Delete User Button (Admin only) -->
+                {% if current_user.role == 'admin' %}
+                <a href="/delete_user/{{ user.id }}" class="btn btn-danger btn-sm">Delete</a>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning" role="alert">
+            No users found.
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between mt-4">
+        <div>
+            <p>Showing {{ users.page }} of {{ users.pages }} pages</p>
+        </div>
+        <div>
+            <ul class="pagination">
+                {% if users.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('users', page=users.prev_num) }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% if users.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('users', page=users.next_num) }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

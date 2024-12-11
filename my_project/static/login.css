@@ -1,0 +1,23 @@
+.loginbox {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+    padding-left: 10 px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 500px;
+    padding: 10px;
+    /* margin: 10px; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.loginbox {
+    text-align: center;
+}
