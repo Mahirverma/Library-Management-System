@@ -13,18 +13,18 @@
    git clone https://github.com/your-repo/library-management.git
    cd library-management
 Install Python dependencies:
-bash
-Copy code
-pip install flask
+```bash
+pip install -r requirements.txt
+
 Run the application:
-bash
+```bash
 Copy code
 python app.py
-Design Choices
+# Design Choices
 Blueprints: Modularized routes for scalability.
 SQLite: Lightweight database for easy setup.
 Session-based auth: Simple token-free user management.
-Assumptions and Limitations
+# Assumptions and Limitations
 Only admins can manage books.
 Users can only modify their profiles.
 No advanced password recovery system implemented.
