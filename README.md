@@ -14,10 +14,10 @@
    cd library-management
 2. Install Python dependencies:
    ```bash
-   pip install -r requirements.txt```
+   pip install -r requirements.txt
 3. Run the application:
    ```bash
-   python app.py```
+   python app.py
 
 # Design Choices
 1. Blueprints: Modularized routes for scalability.
