@@ -10,10 +10,14 @@
         integrity="sha384-pzjw8f+ua7Kw1TIq0oA7MwU2ZpM51FJvfXfggCx5k5EJh0bX7pa2jz6d1OrKoyFv" crossorigin="anonymous">
     <!-- Custom CSS for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% block static %}
+    <!-- The content of individual pages will be injected here -->
+    {% endblock %}
 </head>
 
 <body>
     <!-- Header with Navigation Bar -->
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Library Management</a>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -22,7 +26,7 @@
             </span>
 
             <span>
-                <a class="nav-link" href="/users/me">My Profile</a>
+                <a class="nav-link" href="/profile">My Profile</a>
             </span>
             {% if current_user.is_authenticated %}
             <span><a href="{{ url_for('logout') }}">Log Out</a></span>

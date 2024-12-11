@@ -6,19 +6,22 @@
         <div class="col-md-6">
             <h2>Books Available in the Library</h2>
         </div>
+        <div class="nava col-md-6 text-right">
+            <a href="/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
         <div class="col-md-6 text-right">
-            {% if user.role == 'admin' %}
+            {% if is_admin %}
             <a href="/add_book" class="btn btn-primary">Add New Book</a>
             {% endif %}
         </div>
     </div>
 
     <!-- Search Form -->
-    <form method="GET" action="/books" class="mb-4">
+    <form method="GET" class="mb-4">
         <div class="input-group">
             <input type="text" class="form-control" name="search" placeholder="Search by title or author"
                 value="{{ request.args.get('search') }}">
-            <div class="input-group-append">
+            <div class="input-group-append"><br>
                 <button class="btn btn-secondary" type="submit">Search</button>
             </div>
         </div>

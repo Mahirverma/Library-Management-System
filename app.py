@@ -18,8 +18,9 @@ def home():
 @login_required
 def welcome_user():
     books = Book.query.all()
-    username = session.get('username')
-    return render_template('dashboard.html', books=books, username=username)
+    username = session.get('user')
+    is_admin = session.get('is_admin')
+    return render_template('dashboard.html', books=books, username=username, is_admin=is_admin)
 
 
 @app.route('/logout')
@@ -39,7 +40,9 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
 
         if user.check_password(form.password.data) and user is not None:
-            session['username'] = user.username
+            session['user'] = user.username
+            session['email'] = user.email
+            session['is_admin'] = user.is_admin
             login_user(user)
             flash('Logged in successfully.')
 
@@ -66,6 +69,54 @@ def register():
         flash('Thanks for registering! Now you can login!')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+
+@app.route('/view_books', methods=['GET'])
+@login_required
+def books():
+    books = Book.query.all()
+    is_admin = session.get('is_admin')
+    return render_template('books.html', books=books, is_admin=is_admin)
+
+
+@app.route('/profile', methods=['GET'])
+@login_required
+def profile():
+    username = session.get('user')
+    email = session.get('email')
+    is_admin = session.get('is_admin')
+    return render_template('profile.html', username=username, is_admin=is_admin, email=email)
+
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+def edit_profile():
+    form = RegistrationForm(is_update=True)
+
+    username = session.get('user')
+    user = User.query.filter_by(username=username).first()
+
+    if not user:
+        flash('User not found!', 'danger')
+        return redirect(url_for('welcome_user'))
+
+    if request.method == 'GET':  # Populate form only on GET request
+        form.email.data = user.email
+        form.username.data = user.username
+
+    if form.validate_on_submit():
+        user.email = form.email.data
+        user.username = form.username.data
+        if form.password.data:
+            user.password = generate_password_hash(form.password.data)
+
+        db.session.commit()
+        session['user'] = user.username
+        flash('Your profile has been updated!', 'success')
+        return redirect(url_for('profile'))
+
+    form.email.data = user.email
+    form.username.data = user.username
+    return render_template('edit_profile.html', form=form)
 
 
 if __name__ == '__main__':

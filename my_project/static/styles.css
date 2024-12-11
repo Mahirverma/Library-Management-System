@@ -5,6 +5,7 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
 h1,
@@ -31,6 +32,7 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    height: 100%;
 }
 
 /* Header */
@@ -146,13 +148,13 @@ textarea:focus {
 }
 
 /* Footer */
-.footer {
-    background-color: #007bff;
+footer {
+    background-color: #28a745;
     color: white;
     text-align: center;
     padding: 10px;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
 }
 
@@ -210,4 +212,9 @@ textarea:focus {
     color: white;
     text-decoration: none;
     padding-right: 10px;
+}
+
+.nava a:hover {
+    color: #fff;
+    text-decoration: underline;
 }

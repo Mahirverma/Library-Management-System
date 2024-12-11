@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block static %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
@@ -17,28 +21,23 @@
                     <h5 class="mb-1">View Books</h5>
                     <p class="mb-1">Browse the available books in the library.</p>
                 </a>
-
-                <!-- <a href="/profile" class="list-group-item list-group-item-action">
+                <br>
+                <a href="/edit_profile" class="list-group-item list-group-item-action">
                     <h5 class="mb-1">Manage Profile</h5>
                     <p class="mb-1">Edit your personal details and settings.</p>
                 </a>
-
-                <!--  if user.role == 'admin'  -->
-                <!-- <a href="/manage_books" class="list-group-item list-group-item-action">
+                <br>
+                {% if is_admin %}
+                <a href="/manage_books" class="list-group-item list-group-item-action">
                     <h5 class="mb-1">Manage Books</h5>
                     <p class="mb-1">Add, update, or remove books from the library.</p>
-                </a> -->
-
-                <!-- <a href="/manage_users" class="list-group-item list-group-item-action">
+                </a>
+                <br>
+                <a href="/manage_users" class="list-group-item list-group-item-action">
                     <h5 class="mb-1">Manage Users</h5>
                     <p class="mb-1">View and delete users in the system.</p>
-                </a> -->
-                <!-- endif  -->
-
-                <!-- <a href="/logout" class="list-group-item list-group-item-action">
-                    <h5 class="mb-1">Logout</h5>
-                    <p class="mb-1">Log out of your account.</p>
-                </a> -->
+                </a>
+                {% endif %}
             </div>
         </div>
     </div>
