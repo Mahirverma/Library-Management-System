@@ -12,12 +12,12 @@
    ```bash
    git clone https://github.com/your-repo/library-management.git
    cd library-management
-Install Python dependencies:
+2. Install Python dependencies:
    ```bash
-   pip install -r requirements.txt
-Run the application:
+   pip install -r requirements.txt```
+3. Run the application:
    ```bash
-   python app.py
+   python app.py```
 
 # Design Choices
 1. Blueprints: Modularized routes for scalability.
