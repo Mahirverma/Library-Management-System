@@ -2,7 +2,7 @@
 
 ## Features
 1. CRUD operations for books and members.
- Role-based permissions (admin and user).
+2. Role-based permissions (admin and user).
 
 ## How to Run
 1. Clone the repository:
