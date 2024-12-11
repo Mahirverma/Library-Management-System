@@ -9,7 +9,7 @@
 
 ## How to Run
 1. Clone the repository:
-   ```cmd
+   ```commamd prompt
    git clone https://github.com/your-repo/library-management.git
    cd library-management
 Install Python dependencies:
